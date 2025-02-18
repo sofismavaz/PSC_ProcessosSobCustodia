@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Levantamento de Documentos/Processos</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+        <div class="container">
+                <form>
+                        <fieldset>
+                                <legend>Levantamento de Documentos/Processos</legend>
+                                <div class="form-group">
+                                        <label for="codigo_processo">Código do Processo:</label>
+                                        <input type="text" class="form-control" id="codigo_processo" required>
+                                        <label for="descricao_documento">Descrição do Documento:</label>
+                                        <input type="text" class="form-control" id="descricao_documento" required>
+                                        <label for="data_digitalizacao">Data e Hora da Digitalização:</label>
+                                        <input type="datetime-local" class="form-control" id="data_digitalizacao"
+                                                readonly>
+                                        <label for="usuario_digitalizacao">Usuário Responsável pela
+                                                Digitalização:</label>
+                                        <input type="text" class="form-control" id="usuario_digitalizacao" readonly>
+                                        <label for="referencia_documento_original">Referência ao Documento
+                                                Original:</label>
+                                        <input type="text" class="form-control" id="referencia_documento_original"
+                                                required>
+                                        <label for="hash_imagem">Hash da Imagem:</label>
+                                        <input type="text" class="form-control" id="hash_imagem" readonly>
+                                        <label for="observacoes">Observações:</label> <textarea class="form-control"
+                                                id="observacoes" rows="3"></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Salvar</button>
+                        </fieldset>
+                </form>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
