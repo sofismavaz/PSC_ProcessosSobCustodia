@@ -6,40 +6,105 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Levantamento de Documentos/Processos</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+
 </head>
 
 <body>
-        <div class="container">
-                <form>
-                        <fieldset>
-                                <legend>Levantamento de Documentos/Processos</legend>
-                                <div class="form-group">
-                                        <label for="codigo_processo">Código do Processo:</label>
-                                        <input type="text" class="form-control" id="codigo_processo" required>
-                                        <label for="descricao_documento">Descrição do Documento:</label>
-                                        <input type="text" class="form-control" id="descricao_documento" required>
-                                        <label for="data_digitalizacao">Data e Hora da Digitalização:</label>
-                                        <input type="datetime-local" class="form-control" id="data_digitalizacao"
-                                                readonly>
-                                        <label for="usuario_digitalizacao">Usuário Responsável pela
-                                                Digitalização:</label>
-                                        <input type="text" class="form-control" id="usuario_digitalizacao" readonly>
-                                        <label for="referencia_documento_original">Referência ao Documento
-                                                Original:</label>
-                                        <input type="text" class="form-control" id="referencia_documento_original"
-                                                required>
-                                        <label for="hash_imagem">Hash da Imagem:</label>
-                                        <input type="text" class="form-control" id="hash_imagem" readonly>
-                                        <label for="observacoes">Observações:</label> <textarea class="form-control"
-                                                id="observacoes" rows="3"></textarea>
-                                </div>
-                                <button type="submit" class="btn btn-primary">Salvar</button>
-                        </fieldset>
-                </form>
-        </div>
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+        <form class="container" action="http://localhost:8080/sgd/sgd.php?acao=levantamentoDoctosProcessos"
+                method="post">
+                <fieldset class="rows">
+                        <legend>Informações da Unidade Custodiadora</legend>
+                        <div class="form-group">
+                                <label for="idUnidadeCustodiadora">Unidade Custodiadora:</label><br>
+                                <input type="text" id="idUnidadeCustodiadora" name="idUnidadeCustodiadora"><br><br>
+                        </div>
+                        <label for="idMunicipioCustodiadora">Município Custodiador:</label><br>
+                        <input type="text" id="idMunicipioCustodiadora" name="idMunicipioCustodiadora"><br><br>
+                </fieldset>
+
+                <fieldset>
+                        <legend>Informações do Documento/Processo</legend>
+
+                        <label for="numeroDocumentoProcesso">Número do Documento/Processo:</label><br>
+                        <input type="text" id="numeroDocumentoProcesso" name="numeroDocumentoProcesso"><br><br>
+
+                        <label for="idTipoProcesso">Tipo de Processo (Administrativo/Judicial):</label><br>
+                        <select id="idTipoProcesso" name="idTipoProcesso">
+                                <option value="1">Judicial</option>
+                                <option value="2">Administrativo</option>
+                        </select><br><br>
+
+                        <label for="tituloDescricaoDocumentoProcesso">Título/Descrição do
+                                Documento/Processo:</label><br>
+                        <textarea id="tituloDescricaoDocumentoProcesso" name="tituloDescricaoDocumentoProcesso" rows="4"
+                                cols="50"></textarea><br><br>
+
+                        <label for="dataInicioTramitacao">Data de Início da Tramitação:</label><br>
+                        <input type="date" id="dataInicioTramitacao" name="dataInicioTramitacao"><br><br>
+
+                        <label for="dataFimTramitacao">Data de Fim da Tramitação:</label><br>
+                        <input type="date" id="dataFimTramitacao" name="dataFimTramitacao"><br><br>
+
+                        <label for="quantidadeDocumentos">Quantidade de Documentos (folhas):</label><br>
+                        <input type="number" id="quantidadeDocumentos" name="quantidadeDocumentos"><br><br>
+
+                        <label for="volume">Volume:</label><br>
+                        <input type="text" id="volume" name="volume"><br><br>
+
+                        <label for="volumeFinal">Volume Final:</label><br>
+                        <input type="text" id="volumeFinal" name="volumeFinal"><br><br>
+
+                        <label for="idTipoVolume">Tipo de Volume:</label><br>
+                        <select id="idTipoVolume" name="idTipoVolume">
+                                <option value="1">Livro</option>
+                                <option value="2">Processo</option>
+                                <option value="3">Documento</option>
+                        </select><br><br>
+
+                        <label for="idCodigoClassificacaoTabelaTemporalidade">Código de Classificação da Tabela de
+                                Temporalidade:</label><br>
+                        <input type="text" id="idCodigoClassificacaoTabelaTemporalidade"
+                                name="idCodigoClassificacaoTabelaTemporalidade"><br><br>
+
+                        <label for="tamanhoFolha">Tamanho da Folha:</label><br>
+                        <!-- <input type="text" id="tamanhoFolha" name="tamanhoFolha"><br><br> -->
+                        <select id="tamanhoFolha" name="tamanhoFolha">
+                                <option value="1">A4</option>
+                                <option value="2">Ofício</option>
+                                <option value="3">A3</option>
+                                <option value="4">Jornal</option>
+                                <option value="5">A0 Plotter</option>
+                                <option value="6">A6 Folheto</option>
+                        </select><br><br>
+
+
+                        <label for="idValorHistorico">Valor Histórico:</label><br>
+                        <select id="idValorHistorico" name="idValorHistorico">
+                                <option value="1">Eliminação</option>
+                                <option value="2">Permanente</option>
+                                <option value="3">Gestão de Pessoas</option>
+                        </select><br><br>
+
+                        <label for="idEstadoConservacao">Estado de Conservação:</label><br>
+                        <select id="idEstadoConservacao" name="idEstadoConservacao">
+                                <option value="1">Bom</option>
+                                <option value="2">Ruim</option>
+                                <option value="3">Danificado</option>
+                        </select><br><br>
+
+                        <label for="localArmazenamento">Local de Armazenamento (Móvel / Estante / Prateleira /
+                                Caixa):</label><br>
+                        <input type="text" id="localArmazenamento" name="localArmazenamento"><br><br>
+
+                        <label for="observacoes">Observações:</label><br>
+                        <textarea id="observacoes" name="observacoes" rows="4" cols="50"></textarea><br><br>
+                </fieldset>
+                <div>
+                        <input type="submit" value="Enviar">
+                </div>
+        </form>
 </body>
 
 </html>

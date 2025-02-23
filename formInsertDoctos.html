@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inclusão de Registros</title>
+</head>
+<body>
+    <script>
+        function validateForm() {
+            var x = document.forms["formInsertDoctos"]["autorRegistro"].value;
+            if (x == "") {
+                alert("O campo Autor do Registro deve ser preenchido.");
+                return false;
+            }
+            var y = document.forms["formInsertDoctos"]["dataHoraRegistro"].value;
+            if (y == "") {
+                alert("O campo Data e Hora do Registro deve ser preenchido.");
+                return false;
+            }
+            var z = document.forms["formInsertDoctos"]["unidadeCustodiadora"].value;
+            if (z == "") {
+                alert("O campo Unidade Custodiadora deve ser preenchido.");
+                return false;
+            }
+            var w = document.forms["formInsertDoctos"]["municipioCustodiador"].value;
+            if (w == "") {
+                alert("O campo Município Custodiador deve ser preenchido.");
+                return false;
+            }
+            var a = document.forms["formInsertDoctos"]["numeroProcesso"].value;
+            if (a == "") {
+                alert("O campo Número do Documento/Processo deve ser preenchido.");
+                return false;
+            }
+            var b = document.forms["formInsertDoctos"]["tituloDescricao"].value;
+            if (b == "") {
+                alert("O campo Título/Descrição do Documento/Processo deve ser preenchido.");
+                return false;
+            }
+            var c = document.forms["formInsertDoctos"]["codigoClassificacao"].value;
+            if (c == "") {
+                alert("O campo Código de Classificação da Tabela de Temporalidade deve ser preenchido.");
+                return false;
+            }
+            var d = document.forms["formInsertDoctos"]["localArmazenamento"].value;
+            if (d == "") {
+                alert("O campo Local de Armazenamento deve ser preenchido.");
+                return false;
+            }
+        }
+    </script>
+    <h1>Inclusão de Registros de Documentos/Processos</h1>
+    <form action="#" method="post">
+        <fieldset>
+            <legend>Informações de Registro</legend>
+            <div>
+                <label for="autorRegistro">Autor do Registro:</label>
+                <input type="text" id="autorRegistro" name="autorRegistro" required>
+            </div>
+            <div>
+                <label for="dataHoraRegistro">Data e Hora do Registro:</label>
+                <input type="datetime-local" id="dataHoraRegistro" name="dataHoraRegistro" required>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>Informações da Unidade Custodiadora</legend>
+            <div>
+                <label for="unidadeCustodiadora">Unidade Custodiadora:</label>
+                <input type="text" id="unidadeCustodiadora" name="unidadeCustodiadora" required>
+            </div>
+            <div>
+                <label for="municipioCustodiador">Município Custodiador:</label>
+                <input type="text" id="municipioCustodiador" name="municipioCustodiador" required>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>Informações do Documento/Processo</legend>
+            <div>
+                <label for="numeroProcesso">Número do Documento/Processo:</label>
+                <input type="text" id="numeroProcesso" name="numeroProcesso" required>
+            </div>
+           <div>
+                <label for="tipoProcesso">Tipo de Processo:</label>
+                <select id="tipoProcesso" name="tipoProcesso">
+                    <option value="Judicial">Judicial</option>
+                    <option value="Administrativo">Administrativo</option>
+                </select>
+            </div>
+            <div>
+                <label for="tituloDescricao">Título/Descrição do Documento/Processo:</label><br>
+                <textarea id="tituloDescricao" name="tituloDescricao" rows="4" cols="50"></textarea>
+            </div>
+            <div>
+                <label for="dataInicioTramitacao">Data de Início da Tramitação:</label>
+                <input type="date" id="dataInicioTramitacao" name="dataInicioTramitacao">
+            </div>
+            <div>
+                <label for="dataFimTramitacao">Data de Fim da Tramitação:</label>
+                <input type="date" id="dataFimTramitacao" name="dataFimTramitacao">
+            </div>
+            <div>
+                <label for="quantidadeFolhas">Quantidade de Documentos (folhas):</label>
+                <input type="number" id="quantidadeFolhas" name="quantidadeFolhas">
+            </div>
+            <div>
+                <label for="volume">Volume:</label>
+                <input type="text" id="volume" name="volume">
+            </div>
+            <div>
+                <label for="volumeFinal">Volume Final:</label>
+                <input type="text" id="volumeFinal" name="volumeFinal">
+            </div>
+            <div>
+                <label for="tipoVolume">Tipo de Volume:</label>
+                <select id="tipoVolume" name="tipoVolume">
+                    <option value="Livro">Livro</option>
+                    <option value="Processo">Processo</option>
+                    <option value="Documento">Documento</option>
+                </select>
+            </div>
+            <div>
+                <label for="codigoClassificacao">Código de Classificação da Tabela de Temporalidade:</label>
+                <input type="text" id="codigoClassificacao" name="codigoClassificacao">
+            </div>
+            <div>
+                <label for="tamanhoFolha">Tamanho da Folha:</label>
+                <select id="tamanhoFolha" name="tamanhoFolha">
+                    <option value="A4">A4</option>
+                    <option value="Ofício">Ofício</option>
+                    <option value="A3">A3</option>
+                    <option value="Jornal">Jornal</option>
+                    <option value="A0 Plotter">A0 Plotter</option>
+                    <option value="A6 Folheto">A6 Folheto</option>
+                </select>
+            </div>
+            <div>
+                <label for="valorHistorico">Valor Histórico:</label>
+                <select id="valorHistorico" name="valorHistorico">
+                    <option value="Eliminação">Eliminação</option>
+                    <option value="Permanente">Permanente</option>
+                </select>
+            </div>
+             <div>
+                <label for="gestaoPessoas">Gestão de Pessoas:</label>
+                <input type="checkbox" id="gestaoPessoas" name="gestaoPessoas">
+            </div>
+            <div>
+                <label for="estadoConservacao">Estado de Conservação:</label>
+                <select id="estadoConservacao" name="estadoConservacao">
+                    <option value="Bom">Bom</option>
+                    <option value="Ruim">Ruim</option>
+                    <option value="Danificado">Danificado</option>
+                </select>
+            </div>
+            <div>
+                <label for="localArmazenamento">Local de Armazenamento:</label>
+                <input type="text" id="localArmazenamento" name="localArmazenamento">
+            </div>
+            <div>
+                <label for="observacoes">Observações:</label><br>
+                <textarea id="observacoes" name="observacoes" rows="4" cols="50"></textarea>
+            </div>
+        </fieldset>
+
+        <button type="submit">Salvar Registro</button>
+    </form>
+</body>
+</html>
