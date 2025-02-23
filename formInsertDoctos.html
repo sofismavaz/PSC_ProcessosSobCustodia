@@ -7,7 +7,7 @@
     <title>Inclusão de Registros</title>
 </head>
 
-<body>
+<body onload="datetimeField()">
     <h1>Inclusão de Registros de Documentos / Processos</h1>
     <form action="#" method="post">
 
@@ -116,9 +116,24 @@
         <fieldset>
             <legend>Autor do Registro</legend>
             <input type="text" id="autorRegistro" name="autorRegistro" value="Usuário Logado">
-            <input type="datetime-local" id="dataHoraRegistro" name="dataHoraRegistro"
-                value="<?php echo date('Y-m-d H:i:s'); ?>">
+            <input type="text" id="datetimeFieldId" name="dataHoraRegistro"
+                readonly>    <!-- Campo somente leitura -->
         </fieldset>
+        
+        <!-- Incluir log data e hora de gravação do registro -->
+        <script>
+            function datetimeField() {
+                var today = new Date();
+                var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+                var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+                var dateTime = date + ' ' + time;
+                document.getElementById('datetimeFieldId').value = dateTime;
+            }
+            function autorRegistro() {
+                var autor = "Usuário Logado";
+                document.getElementById('autorRegistro').value = autor;
+            }
+        </script>
 
     </form>
 
@@ -128,8 +143,8 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 15px;
+            /* onload: validateForm(); */
         }
-
         .form-group {
             margin-bottom: 10px;
         }
