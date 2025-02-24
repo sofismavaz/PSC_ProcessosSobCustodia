@@ -20,8 +20,8 @@ CREATE TABLE documentos_processos (
     idValorHistorico INT, -- Código da tabela de valor histórico
     idEstadoConservacao INT, -- Código da tabela de estado de conservação
     localArmazenamento VARCHAR(255), -- (Móvel / Estante / Prateleira / Caixa)
-    codigoEventoSEI VARCHAR(255),
-    editalPublicacao VARCHAR(255), 
+    codigoEventoEditalSEI VARCHAR(255), -- Evento de tramitação no SEI da publicação do edital
+    dataEventoPublicacaoSEI DATE, -- Data SEI da publicação do edital
     observacoes TEXT -- Campo para notas adicionais
 );
 

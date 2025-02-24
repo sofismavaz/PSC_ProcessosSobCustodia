@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inclusão de Registros</title>
+</head>
+
+<body onload="datetimeField()" name="formInsertDoctos" onsubmit="return validateForm()">
+    <h1>Inclusão de Registros de Documentos / Processos</h1>
+    <form action="#" method="post">
+
+        <fieldset>
+            <legend>Identificação da Unidade Custodiadora</legend>
+            <div>
+                <label for="unidadeCustodiadora">Unidade Custodiadora:</label>
+                <input type="text" id="unidadeCustodiadora" name="unidadeCustodiadora" required>
+            </div>
+            <div>
+                <label for="municipioCustodiador">Município Custodiador:</label>
+                <input type="text" id="municipioCustodiador" name="municipioCustodiador" required>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>Informações do Documento / Processo</legend>
+            <div>
+                <label for="numeroProcesso">Número do Documento/Processo:</label>
+                <input type="text" id="numeroProcesso" name="numeroProcesso" required>
+            </div>
+            <div>
+                <label for="tipoProcesso">Tipo de Processo:</label>
+                <select id="tipoProcesso" name="tipoProcesso">
+                    <option value="1">Administrativo</option>
+                    <option value="2">Judicial</option>
+                </select>
+            </div>
+            <div>
+                <label for="tituloDescricao">Título/Descrição do Documento/Processo:</label><br>
+                <textarea id="tituloDescricao" name="tituloDescricao" rows="4" cols="50"></textarea>
+            </div>
+            <div>
+                <label for="dataInicioTramitacao">Data de Início da Tramitação:</label>
+                <input type="date" id="dataInicioTramitacao" name="dataInicioTramitacao">
+            </div>
+            <div>
+                <label for="dataFimTramitacao">Data de Fim da Tramitação:</label>
+                <input type="date" id="dataFimTramitacao" name="dataFimTramitacao">
+            </div>
+            <div>
+                <label for="quantidadeFolhas">Quantidade de Documentos (folhas):</label>
+                <input type="number" id="quantidadeFolhas" name="quantidadeFolhas">
+            </div>
+            <div>
+                <label for="volume">Volume:</label>
+                <input type="text" id="volume" name="volume">
+            </div>
+            <div>
+                <label for="volumeFinal">Volume Final:</label>
+                <input type="text" id="volumeFinal" name="volumeFinal">
+            </div>
+            <div>
+                <label for="tipoVolume">Tipo de Volume:</label>
+                <select id="tipoVolume" name="tipoVolume">
+                    <option value="1">Processo</option>
+                    <option value="2">Livro</option>
+                    <option value="3">Documento</option>
+                </select>
+            </div>
+            <div>
+                <label for="codigoClassificacao">Código de Classificação da Tabela de Temporalidade:</label>
+                <input type="text" id="codigoClassificacao" name="codigoClassificacao">
+            </div>
+            <div>
+                <label for="tamanhoFolha">Tamanho da Folha:</label>
+                <select id="tamanhoFolha" name="tamanhoFolha">
+                    <option value="1">A4</option>
+                    <option value="2">Ofício</option>
+                    <option value="3">A3</option>
+                    <option value="4">Jornal</option>
+                    <option value="5">A0 Plotter</option>
+                    <option value="6">A6 Folheto</option>
+                </select>
+            </div>
+            <div>
+                <label for="valorHistorico">Valor Histórico:</label>
+                <select id="valorHistorico" name="valorHistorico">
+                    <option value="1">Eliminação</option>
+                    <option value="2">Permanente</option>
+                    <option value="3">Gestão de Pessoas</option>
+                </select>
+            </div>
+            <div>
+                <label for="estadoConservacao">Estado de Conservação:</label>
+                <select id="estadoConservacao" name="estadoConservacao">
+                    <option value="1">Bom</option>
+                    <option value="2">Ruim</option>
+                    <option value="3">Danificado</option>
+                </select>
+            </div>
+            <div>
+                <label for="localArmazenamento">Local de Armazenamento:</label>
+                <input type="text" id="localArmazenamento" name="localArmazenamento">
+            </div>
+            <div>
+                <label for="observacoes">Observações:</label><br>
+                <textarea id="observacoes" name="observacoes" rows="4" cols="50"></textarea>
+            </div>
+        </fieldset>
+
+        <div class="botaoEnvio"> <!-- Botão de envio do formulário -->
+            <button type="submit" onclick="">Salvar Registro</button>
+        </div>
+
+        <!-- Autor do registro e data/hora do registro - somente leitura -->
+        <fieldset>
+            <legend>Autor do Registro</legend>
+            <input type="text" id="autorRegistro" name="autorRegistro" readonly> <!-- value="${autorRegistro()}"> -->
+            <input type="text" id="datetimeFieldId" name="dataHoraRegistro" readonly>
+        </fieldset>
+
+        <!-- Incluir log data e hora de gravação do registro -->
+        <script>
+            function datetimeField() {
+                var today = new Date();
+                var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+                var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+                var dateTime = date + ' ' + time;
+                document.getElementById('datetimeFieldId').value = dateTime;
+            }
+            function autorRegistro() {
+                var autor = "Usuário Logado";
+                document.getElementById('autorRegistro').value = autor;
+            }
+        </script>
+
+    </form>
+
+    <!-- Estilos do formulário -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 1.5em;
+            margin-bottom: 15px;            
+        }
+
+        label {
+            /* display: block; */
+            margin-bottom: 5px;
+            font-size: small;
+            box-sizing: border-box;
+        }
+
+        fieldset {
+            background-color: #b3b2b2;
+            border: 1px solid #000;
+            padding: 0% 2%;
+            border-radius: 5px;
+        }
+
+        legend {
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        input {
+            width: 100%;
+            padding: 5px;
+            margin: 5px 0;
+            box-sizing: border-box;
+            border-radius: 5px;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        input[type="datetime-local"],
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 5px;
+            margin: 5px 0;
+        }
+
+        textarea {
+            width: 100%;
+            /* Ocupa toda a largura da coluna */
+            padding: 0;
+            /* margin: 5px 0; */
+            box-sizing: border-box;
+            /* Faz com que o padding não aumente o tamanho do textarea */
+        }
+
+        /* button {
+            padding: 10px;
+            background-color: #000;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        } */
+
+        .botaoEnvio {
+            padding: 10px;
+            margin-top: auto;
+            margin-bottom: auto;
+            /* box-shadow: 2px 2px 5px #050505; */
+            border-radius: 5px;
+            display: grid;
+        }
+    </style>
+
+    <!-- Estilos do formulário -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 15px;
+        }
+
+        /* .form-group {
+            margin-bottom: 10px;
+        } */
+
+        label {
+            /* display: block; */
+            margin-bottom: 5px;
+            font-size: small;
+            box-sizing: border-box;
+        }
+
+        fieldset {
+            background-color: #b3b2b2;
+            border: 1px solid #000;
+            padding: 0% 2%;
+            border-radius: 5px;
+        }
+
+        legend {
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        input {
+            width: 100%;
+            padding: 5px;
+            margin: 5px 0;
+            box-sizing: border-box;
+            /* Faz com que o padding não aumente o tamanho do input */
+            border-radius: 5px;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        input[type="datetime-local"],
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 5px;
+            margin: 5px 0;
+        }
+
+        textarea {
+            width: 100%;
+            /* Ocupa toda a largura da coluna */
+            padding: 0;
+            /* margin: 5px 0; */
+            box-sizing: border-box;
+            /* Faz com que o padding não aumente o tamanho do textarea */
+        }
+
+        /* button {
+            padding: 10px;
+            background-color: #000;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        } */
+
+        .botaoEnvio {
+            padding: 1%;
+            margin-top: 10px;
+            box-shadow: 2px 2px 5px #000;
+            border-radius: 5px;
+            display: grid;
+        }
+    </style>
+
+
+    <!-- Script para validação dos campos obrigatórios -->
+    <script>
+        function validateForm() {
+            var x = document.forms["formInsertDoctos"]["autorRegistro"].value;
+            if (x == "") {
+                alert("O campo Autor do Registro deve ser preenchido.");
+                return false;
+            }
+            var y = document.forms["formInsertDoctos"]["dataHoraRegistro"].value;
+            if (y == "") {
+                alert("O campo Data e Hora do Registro deve ser preenchido.");
+                return false;
+            }
+            var z = document.forms["formInsertDoctos"]["unidadeCustodiadora"].value;
+            if (z == "") {
+                alert("O campo Unidade Custodiadora deve ser preenchido.");
+                return false;
+            }
+            var w = document.forms["formInsertDoctos"]["municipioCustodiador"].value;
+            if (w == "") {
+                alert("O campo Município Custodiador deve ser preenchido.");
+                return false;
+            }
+            var a = document.forms["formInsertDoctos"]["numeroProcesso"].value;
+            if (a == "") {
+                alert("O campo Número do Documento/Processo deve ser preenchido.");
+                return false;
+            }
+            var b = document.forms["formInsertDoctos"]["tituloDescricao"].value;
+            if (b == "") {
+                alert("O campo Título/Descrição do Documento/Processo deve ser preenchido.");
+                return false;
+            }
+            var c = document.forms["formInsertDoctos"]["codigoClassificacao"].value;
+            if (c == "") {
+                alert("O campo Código de Classificação da Tabela de Temporalidade deve ser preenchido.");
+                return false;
+            }
+            var d = document.forms["formInsertDoctos"]["localArmazenamento"].value;
+            if (d == "") {
+                alert("O campo Local de Armazenamento deve ser preenchido.");
+                return false;
+            }
+        }
+    </script>
+</body>
+
+</html>
