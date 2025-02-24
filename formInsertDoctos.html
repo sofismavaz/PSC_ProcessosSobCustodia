@@ -7,12 +7,12 @@
     <title>Inclusão de Registros</title>
 </head>
 
-<body onload="datetimeField()">
+<body onload="datetimeField()" name="formInsertDoctos" onsubmit="return validateForm()">
     <h1>Inclusão de Registros de Documentos / Processos</h1>
     <form action="#" method="post">
 
         <fieldset>
-            <legend>Informações da Unidade Custodiadora</legend>
+            <legend>Identificação da Unidade Custodiadora</legend>
             <div>
                 <label for="unidadeCustodiadora">Unidade Custodiadora:</label>
                 <input type="text" id="unidadeCustodiadora" name="unidadeCustodiadora" required>
@@ -24,7 +24,7 @@
         </fieldset>
 
         <fieldset>
-            <legend>Informações do Documento/Processo</legend>
+            <legend>Informações do Documento / Processo</legend>
             <div>
                 <label for="numeroProcesso">Número do Documento/Processo:</label>
                 <input type="text" id="numeroProcesso" name="numeroProcesso" required>
@@ -109,17 +109,17 @@
             </div>
         </fieldset>
 
-        <!-- Botão de envio do formulário -->
-        <button type="submit">Salvar Registro</button>
+        <div class="botaoEnvio"> <!-- Botão de envio do formulário -->
+            <button type="submit" onclick="">Salvar Registro</button>
+        </div>
 
-        <!-- Campos ocultos para autor do registro e data/hora do registro -->
+        <!-- Autor do registro e data/hora do registro - somente leitura -->
         <fieldset>
             <legend>Autor do Registro</legend>
-            <input type="text" id="autorRegistro" name="autorRegistro" value="Usuário Logado">
-            <input type="text" id="datetimeFieldId" name="dataHoraRegistro"
-                readonly>    <!-- Campo somente leitura -->
+            <input type="text" id="autorRegistro" name="autorRegistro" readonly> <!-- value="${autorRegistro()}"> -->
+            <input type="text" id="datetimeFieldId" name="dataHoraRegistro" readonly>
         </fieldset>
-        
+
         <!-- Incluir log data e hora de gravação do registro -->
         <script>
             function datetimeField() {
@@ -143,29 +143,30 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 15px;
-            /* onload: validateForm(); */
         }
+
         .form-group {
             margin-bottom: 10px;
         }
-        button {
-            padding: 10px;
-            background-color: #000;
-            color: #fff;
-            border: none;
-            cursor: pointer;            
+
+        h1 {
+            text-align: center;
+            font-size: 1.5em;
+            margin-bottom: 15px;            
         }
+
         label {
-            display: block;
-            /* Garante que a label ocupe toda a largura */
-            /* font-weight: bold; */
+            /* display: block; */
             margin-bottom: 5px;
+            font-size: small;
+            box-sizing: border-box;
         }
 
         fieldset {
             background-color: #b3b2b2;
             border: 1px solid #000;
             padding: 0% 2%;
+            border-radius: 5px;
         }
 
         legend {
@@ -178,8 +179,9 @@
             padding: 5px;
             margin: 5px 0;
             box-sizing: border-box;
-            /* Faz com que o padding não aumente o tamanho do input */
+            border-radius: 5px;
         }
+
         input[type="text"],
         input[type="date"],
         input[type="datetime-local"],
@@ -199,16 +201,97 @@
             /* Faz com que o padding não aumente o tamanho do textarea */
         }
 
-        button {
+        /* button {
             padding: 10px;
             background-color: #000;
             color: #fff;
             border: none;
             cursor: pointer;
+        } */
+
+        .botaoEnvio {
+            padding: 10px;
+            margin-top: auto;
+            margin-bottom: auto;
+            /* box-shadow: 2px 2px 5px #050505; */
+            border-radius: 5px;
+            display: grid;
+        }
+    </style>
+
+    <!-- Estilos do formulário -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 15px;
         }
 
-        button:hover {
-            background-color: #333;
+        /* .form-group {
+            margin-bottom: 10px;
+        } */
+
+        label {
+            /* display: block; */
+            margin-bottom: 5px;
+            font-size: small;
+            box-sizing: border-box;
+        }
+
+        fieldset {
+            background-color: #b3b2b2;
+            border: 1px solid #000;
+            padding: 0% 2%;
+            border-radius: 5px;
+        }
+
+        legend {
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        input {
+            width: 100%;
+            padding: 5px;
+            margin: 5px 0;
+            box-sizing: border-box;
+            /* Faz com que o padding não aumente o tamanho do input */
+            border-radius: 5px;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        input[type="datetime-local"],
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 5px;
+            margin: 5px 0;
+        }
+
+        textarea {
+            width: 100%;
+            /* Ocupa toda a largura da coluna */
+            padding: 0;
+            /* margin: 5px 0; */
+            box-sizing: border-box;
+            /* Faz com que o padding não aumente o tamanho do textarea */
+        }
+
+        /* button {
+            padding: 10px;
+            background-color: #000;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        } */
+
+        .botaoEnvio {
+            padding: 1%;
+            margin-top: 10px;
+            box-shadow: 2px 2px 5px #000;
+            border-radius: 5px;
+            display: grid;
         }
     </style>
 
