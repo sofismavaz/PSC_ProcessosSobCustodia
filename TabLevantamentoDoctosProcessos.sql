@@ -4,8 +4,8 @@ CREATE TABLE documentos_processos (
     autorRegistro VARCHAR(255) NOT NULL,
     dataHoraRegistro DATETIME NOT NULL,
 
-    idUnidadeCustodiadora VARCHAR(255), -- Código da tabela de unidades - Preferencialmente obtido da base Institucional
-    idMunicipioCustodiadora VARCHAR(255), -- Código da tabela de unidades - Preferencialmente obtido da base IBGE
+    idUnidadeCustodiadora INT, -- Código da tabela de unidades - Preferencialmente obtido da base Institucional
+    idMunicipioCustodiadora INT, -- Código da tabela de unidades - Preferencialmente obtido da base IBGE
     numeroDocumentoProcesso VARCHAR(255),
     idTipoProcesso INT, -- Código da tabela de classificação processos (Administrativo/Judicial/Gestão Pessoas)
     tituloDescricaoDocumentoProcesso TEXT,
