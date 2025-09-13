@@ -1,11 +1,53 @@
+/* 
+Com base na descrição do arquivo "TAP inventário documentário", a aplicação "INVENTÁRIO DOCUMENTÁRIO" deve ser desenvolvida seguindo as seguintes especificações:
+
+**1. Infraestrutura e Tecnologias Essenciais**:
+*   A infraestrutura já está criada e disponível em **DOCKER**, consistindo em:
+    *   Sistema Operacional: Linux Ubuntu.
+    *   Banco de Dados: MySQL (última versão).
+    *   Servidor Web: Apache (última versão).
+    *   Linguagem de Servidor: PHP (última versão).
+*   A aplicação deverá ser escrita usando **Scripts CRUD** (Create, Read, Update, Delete).
+*   As tecnologias de frontend e backend incluem: **HTML, CSS, JS, PHP**, todos interconectados ao banco de dados MySQL.
+*   A estrutura da aplicação precisa ser **responsiva**, utilizando os frameworks **Bootstrap e PHP Laravel**.
+
+**2. Estrutura e Estilo da Aplicação**:
+*   **Menu Superior (Classe "header")**: Deverá apresentar as opções de uso e manuseio dos dados da aplicação "INVENTÁRIO DE DOCUMENTOS E PROCESSOS".
+*   **Esquema de Estilo (`style.css`)**:
+    *   Fundo branco.
+    *   Barra de menu na cor azul em tons suaves.
+    *   Fontes cor preta, tipo Arial, com tamanhos padrão da estrutura capitular da internet.
+    *   Os campos de entrada de dados devem ter **borda arredondada**.
+
+**3. Menu Superior com Opções CRUD**:
+A aplicação deve conter um menu superior com as seguintes opções, cada uma vinculada a uma estrutura CRUD para tratamento dos dados em suas respectivas tabelas:
+
+*   **“Unidade de Custódia”**: Estrutura CRUD para a tabela `unidadeCustodiadora`. Esta tabela armazena o `autorRegistro`, `dataHoraRegistro`, `id` (chave primária auto-incremento) e `unidadeCustodiadora`.
+*   **“Município de Custódia”**: Estrutura CRUD para a tabela `municipioCustodiadora`. Esta tabela contém o `autorRegistro`, `dataHoraRegistro`, `id` (chave primária auto-incremento) e `municipioCustodiadora`.
+*   **“Tipo de Processo”**: Estrutura CRUD para a tabela `tipoProcesso`. A tabela inclui `autorRegistro`, `dataHoraRegistro`, `id` (chave primária auto-incremento) e `tipoProcesso`.
+*   **“Tipo de Volume”**: Estrutura CRUD para a tabela `tipoVolume`. Os campos são `autorRegistro`, `dataHoraRegistro`, `id` (chave primária auto-incremento) e `tipoVolume`.
+*   **“Classificação Temporalidade”**: Estrutura CRUD para a tabela `classificacaoTemporalidade`. Esta tabela armazena `autorRegistro`, `dataHoraRegistro`, `id` (chave primária auto-incremento), `codigo` (único e não nulo), `descricaoAssunto`, `tempoGuardaCorrente`, `tempoGuardaIntermediaria`, `destinacaoFinal` e `observacaoAvisos`.
+*   **“Tamanho de Folha”**: Estrutura CRUD para a tabela `tamanhoFolha`. Contém `autorRegistro`, `dataHoraRegistro`, `id` (chave primária auto-incremento) e `tamanhoFolha`.
+*   **“Valor Histórico”**: Estrutura CRUD para a tabela `valorHistorico`. Os campos são `autorRegistro`, `dataHoraRegistro`, `id` (chave primária auto-incremento) e `valorHistorico`.
+*   **“Estado de Conservação”**: Estrutura CRUD para a tabela `estadoConservacao`. Inclui `autorRegistro`, `dataHoraRegistro`, `id` (chave primária auto-incremento) e `estadoConservacao`.
+*   **“Docto e Processo”**: Estrutura CRUD para tratar os dados do Plano de Classificação de Documentos e Processos, utilizando a tabela `documentos_processos`. Esta é a tabela mais detalhada, contendo campos como `id`, `autorRegistro`, `dataHoraRegistro`, `idUnidadeCustodiadora`, `idMunicipioCustodiadora`, `numeroDocumentoProcesso`, `idTipoProcesso`, `tituloDescricaoDocumentoProcesso`, `dataInicioTramitacao`, `dataFimTramitacao`, `quantidadeDocumentos`, `volume`, `volumeFinal`, `idTipoVolume`, `idCodigoClassificacaoTabelaTemporalidade`, `idTamanhoFolha`, `idValorHistorico`, `idEstadoConservacao`, `localArmazenamento`, `codigoEventoEditalSEI`, `dataEventoPublicacaoSEI` e `observacoes`.
+
+**4. Estrutura do Corpo da Página (`body`) e Comportamento dos Formulários**:
+*   A estrutura `body` da página será usada para dispor dos formulários CRUD, vinculados a cada opção do menu.
+*   **Busca de Registros**: O primeiro campo da tabela será utilizado para **buscar registros existentes** na base de dados MySQL.
+*   **Inserção de Novos Registros**: Caso não exista registro na busca, os campos de inserção serão **desbloqueados para captar novos registros**.
+*   **Caixa de Entrada de Dados**: As caixas de entrada de dados serão apresentadas com **bordas arredondadas**.
+*   **Botões de Ação**:
+    *   Um botão para **voltar ao menu superior "main"**.
+    *   Um botão para **gravar as alterações de conteúdo**.
+
+A implementação deve considerar a definição das tabelas SQL fornecidas em `TabLevantamentoDoctosProcessos.sql`, que detalham os campos para cada entidade, incluindo chaves primárias, tipos de dados e restrições.
+
+*/
 --- Criar os scripts completos de HTML, CSS, PHP e JavaScript para a aplicação "INVENTÁRIO DOCUMENTÁRIO" é um projeto extenso que envolve múltiplos arquivos, configurações de framework e lógica de negócios complexa. No entanto, posso fornecer um guia estrutural e exemplos de como esses scripts seriam organizados e implementados, levando em consideração os requisitos do documento "TAP inventário documentário".
----
 --- A aplicação deve ser responsiva e utilizar os frameworks **Bootstrap** e **PHP Laravel**. A infraestrutura já está definida com Docker, Linux Ubuntu, MySQL, Apache e PHP nas últimas versões.
----
----
 --- ### Estrutura Geral de Arquivos (Laravel)
 --- Uma estrutura básica de um projeto Laravel que atenda a esses requisitos seria:
-
 --- ```
 inventario-documentario/
 ├── app/
@@ -88,9 +130,7 @@ inventario-documentario/
 </body>
 </html>
 --- ```
---- 
 --- **`resources/views/partials/header.blade.php` (Menu Superior)**
---- 
 --- ```html
 <header class="header bg-primary py-3"> {{-- 'bg-primary' do Bootstrap para tom azul suave [2.a.ii] --}}
     <div class="container">
