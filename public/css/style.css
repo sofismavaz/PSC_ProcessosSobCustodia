@@ -1,0 +1,55 @@
+/* style.css */
+
+body {
+    background-color: #fff; /* Fundo branco [2.a.i] */
+    font-family: Arial, sans-serif; /* Fontes tipo Arial [2.a.iii] */
+    color: #333; /* Cor preta para fontes [2.a.iii] */
+    font-size: 1rem; /* Tamanho padrão da estrutura capitular da internet [2.a.iii] */
+}
+
+.header {
+    background-color: #6a9ac9; /* Barra de menu na cor azul em tons suaves [2.a.ii] */
+    color: white;
+}
+
+.header .navbar-brand,
+.header .nav-link {
+    color: white;
+    font-size: 1.2rem;
+}
+
+.header .nav-link:hover {
+    color: #f0f0f0;
+}
+
+.rounded-input {
+    border-radius: 0.5rem !important; /* Borda arredondada para campos de entrada [2.a.iv, 2.3.ii] */
+}
+
+/* Estilos adicionais para o layout */
+.container {
+    max-width: 1200px;
+}
+
+.card {
+    border-radius: 0.75rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+    background-color: #f8f9fa;
+    font-weight: bold;
+    font-size: 1.25rem;
+}
+
+/* Ajustes para responsividade */
+@media (max-width: 991.98px) {
+    .header .navbar-nav {
+        background-color: #6a9ac9;
+        padding: 10px 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .header .nav-link {
+        padding-left: 15px;
+    }
+}
