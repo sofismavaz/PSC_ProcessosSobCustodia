@@ -272,10 +272,7 @@ body {
         padding-left: 15px;
     }
 }
-/* ```
-
----
-
+/*
 ### 3. PHP (Backend com Laravel)
 
 A lógica PHP será implementada em Controladores e Modelos, utilizando o Eloquent ORM do Laravel para interagir com o banco de dados MySQL.
