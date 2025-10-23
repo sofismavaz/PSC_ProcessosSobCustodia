@@ -1,0 +1,633 @@
+/* 
+Com base na descrição do arquivo "TAP inventário documentário", a aplicação "INVENTÁRIO DOCUMENTÁRIO" deve ser desenvolvida seguindo as seguintes especificações:
+
+**1. Infraestrutura e Tecnologias Essenciais**:
+*   A infraestrutura já está criada e disponível em **DOCKER**, consistindo em:
+    *   Sistema Operacional: Linux Ubuntu.
+    *   Banco de Dados: MySQL (última versão).
+    *   Servidor Web: Apache (última versão).
+    *   Linguagem de Servidor: PHP (última versão).
+*   A aplicação deverá ser escrita usando **Scripts CRUD** (Create, Read, Update, Delete).
+*   As tecnologias de frontend e backend incluem: **HTML, CSS, JS, PHP**, todos interconectados ao banco de dados MySQL.
+*   A estrutura da aplicação precisa ser **responsiva**, utilizando os frameworks **Bootstrap e PHP Laravel**.
+
+**2. Estrutura e Estilo da Aplicação**:
+*   **Menu Superior (Classe "header")**: Deverá apresentar as opções de uso e manuseio dos dados da aplicação "INVENTÁRIO DE DOCUMENTOS E PROCESSOS".
+*   **Esquema de Estilo (`style.css`)**:
+    *   Fundo branco.
+    *   Barra de menu na cor azul em tons suaves.
+    *   Fontes cor preta, tipo Arial, com tamanhos padrão da estrutura capitular da internet.
+    *   Os campos de entrada de dados devem ter **borda arredondada**.
+
+**3. Menu Superior com Opções CRUD**:
+A aplicação deve conter um menu superior com as seguintes opções, cada uma vinculada a uma estrutura CRUD para tratamento dos dados em suas respectivas tabelas:
+
+*   **“Unidade de Custódia”**: Estrutura CRUD para a tabela `unidadeCustodiadora`. Esta tabela armazena o `autorRegistro`, `dataHoraRegistro`, `id` (chave primária auto-incremento) e `unidadeCustodiadora`.
+*   **“Município de Custódia”**: Estrutura CRUD para a tabela `municipioCustodiadora`. Esta tabela contém o `autorRegistro`, `dataHoraRegistro`, `id` (chave primária auto-incremento) e `municipioCustodiadora`.
+*   **“Tipo de Processo”**: Estrutura CRUD para a tabela `tipoProcesso`. A tabela inclui `autorRegistro`, `dataHoraRegistro`, `id` (chave primária auto-incremento) e `tipoProcesso`.
+*   **“Tipo de Volume”**: Estrutura CRUD para a tabela `tipoVolume`. Os campos são `autorRegistro`, `dataHoraRegistro`, `id` (chave primária auto-incremento) e `tipoVolume`.
+*   **“Classificação Temporalidade”**: Estrutura CRUD para a tabela `classificacaoTemporalidade`. Esta tabela armazena `autorRegistro`, `dataHoraRegistro`, `id` (chave primária auto-incremento), `codigo` (único e não nulo), `descricaoAssunto`, `tempoGuardaCorrente`, `tempoGuardaIntermediaria`, `destinacaoFinal` e `observacaoAvisos`.
+*   **“Tamanho de Folha”**: Estrutura CRUD para a tabela `tamanhoFolha`. Contém `autorRegistro`, `dataHoraRegistro`, `id` (chave primária auto-incremento) e `tamanhoFolha`.
+*   **“Valor Histórico”**: Estrutura CRUD para a tabela `valorHistorico`. Os campos são `autorRegistro`, `dataHoraRegistro`, `id` (chave primária auto-incremento) e `valorHistorico`.
+*   **“Estado de Conservação”**: Estrutura CRUD para a tabela `estadoConservacao`. Inclui `autorRegistro`, `dataHoraRegistro`, `id` (chave primária auto-incremento) e `estadoConservacao`.
+*   **“Docto e Processo”**: Estrutura CRUD para tratar os dados do Plano de Classificação de Documentos e Processos, utilizando a tabela `documentos_processos`. Esta é a tabela mais detalhada, contendo campos como `id`, `autorRegistro`, `dataHoraRegistro`, `idUnidadeCustodiadora`, `idMunicipioCustodiadora`, `numeroDocumentoProcesso`, `idTipoProcesso`, `tituloDescricaoDocumentoProcesso`, `dataInicioTramitacao`, `dataFimTramitacao`, `quantidadeDocumentos`, `volume`, `volumeFinal`, `idTipoVolume`, `idCodigoClassificacaoTabelaTemporalidade`, `idTamanhoFolha`, `idValorHistorico`, `idEstadoConservacao`, `localArmazenamento`, `codigoEventoEditalSEI`, `dataEventoPublicacaoSEI` e `observacoes`.
+
+**4. Estrutura do Corpo da Página (`body`) e Comportamento dos Formulários**:
+*   A estrutura `body` da página será usada para dispor dos formulários CRUD, vinculados a cada opção do menu.
+*   **Busca de Registros**: O primeiro campo da tabela será utilizado para **buscar registros existentes** na base de dados MySQL.
+*   **Inserção de Novos Registros**: Caso não exista registro na busca, os campos de inserção serão **desbloqueados para captar novos registros**.
+*   **Caixa de Entrada de Dados**: As caixas de entrada de dados serão apresentadas com **bordas arredondadas**.
+*   **Botões de Ação**:
+    *   Um botão para **voltar ao menu superior "main"**.
+    *   Um botão para **gravar as alterações de conteúdo**.
+
+A implementação deve considerar a definição das tabelas SQL fornecidas em `TabLevantamentoDoctosProcessos.sql`, que detalham os campos para cada entidade, incluindo chaves primárias, tipos de dados e restrições.
+
+*/
+--- Criar os scripts completos de HTML, CSS, PHP e JavaScript para a aplicação "INVENTÁRIO DOCUMENTÁRIO" é um projeto extenso que envolve múltiplos arquivos, configurações de framework e lógica de negócios complexa. No entanto, posso fornecer um guia estrutural e exemplos de como esses scripts seriam organizados e implementados, levando em consideração os requisitos do documento "TAP inventário documentário".
+--- A aplicação deve ser responsiva e utilizar os frameworks **Bootstrap** e **PHP Laravel**. A infraestrutura já está definida com Docker, Linux Ubuntu, MySQL, Apache e PHP nas últimas versões.
+--- ### Estrutura Geral de Arquivos (Laravel)
+--- Uma estrutura básica de um projeto Laravel que atenda a esses requisitos seria:
+--- ```
+inventario-documentario/
+├── app/
+│   ├── Http/
+│   │   ├── Controllers/
+│   │   │   ├── UnidadeCustodiadoraController.php
+│   │   │   ├── MunicipioCustodiadoraController.php
+│   │   │   └── ... (outros controllers para cada CRUD)
+│   │   └── Kernel.php
+│   ├── Models/
+│   │   ├── UnidadeCustodiadora.php
+│   │   ├── MunicipioCustodiadora.php
+│   │   ├── TipoProcesso.php
+│   │   ├── ... (outros models para cada tabela)
+│   │   └── DocumentoProcesso.php
+│   └── Providers/
+├── bootstrap/
+├── config/
+├── database/
+│   ├── migrations/
+│   │   ├── 2023_01_01_create_unidade_custodiadora_table.php
+│   │   ├── 2023_01_02_create_municipio_custodiadora_table.php
+│   │   └── ... (outras migrations baseadas em TabLevantamentoDoctosProcessos.sql)
+│   └── seeders/
+├── public/
+│   ├── css/
+│   │   └── style.css
+│   ├── js/
+│   │   └── app.js
+│   └── index.php (ponto de entrada do Laravel)
+├── resources/
+│   ├── views/
+│   │   ├── layouts/
+│   │   │   └── app.blade.php (layout principal com header e footer)
+│   │   ├── partials/
+│   │   │   └── header.blade.php (menu superior)
+│   │   ├── unidade_custodiadora/
+│   │   │   ├── index.blade.php (listar/buscar)
+│   │   │   └── form.blade.php (criar/editar)
+│   │   ├── municipio_custodiadora/
+│   │   │   └── ...
+│   │   └── home.blade.php (página inicial)
+│   └── sass/
+├── routes/
+│   ├── web.php (definição das rotas da aplicação)
+│   └── api.php
+├── storage/
+├── tests/
+├── vendor/
+└── .env (configurações de ambiente, incluindo MySQL)
+
+--- ### 1. HTML (Integrado com Blade do Laravel)
+--- As "views" em Laravel são geralmente escritas usando o sistema de *templates* Blade (`.blade.php`), que permite incorporar lógica PHP de forma mais limpa.
+--- **`resources/views/layouts/app.blade.php` (Layout Principal)**
+--- ```html
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventário Documentário</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- CSS Personalizado -->
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+</head>
+<body>
+    @include('partials.header') {{-- Inclui o menu superior --}}
+
+    <div class="container mt-4">
+        <main id="content-area">
+            @yield('content') {{-- Aqui será renderizado o conteúdo específico de cada página --}}
+        </main>
+    </div>
+
+    <!-- Bootstrap JS (bundle includes Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- JS Personalizado -->
+    <script src="{{ asset('js/app.js') }}"></script>
+</body>
+</html>
+--- ```
+--- **`resources/views/partials/header.blade.php` (Menu Superior)**
+--- ```html
+<header class="header bg-primary py-3"> {{-- 'bg-primary' do Bootstrap para tom azul suave [2.a.ii] --}}
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-dark p-0">
+            <a class="navbar-brand" href="{{ url('/') }}">
+                INVENTÁRIO DE DOCUMENTOS E PROCESSOS
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-crud-target="unidade-custodia">Unidade de Custódia</a> {{-- [2.1.i] --}}
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-crud-target="municipio-custodia">Município de Custódia</a> {{-- [2.1.ii] --}}
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-crud-target="tipo-processo">Tipo de Processo</a> {{-- [2.1.iii] --}}
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-crud-target="tipo-volume">Tipo de Volume</a> {{-- [2.1.iv] --}}
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-crud-target="classificacao-temporalidade">Classificação Temporalidade</a> {{-- [2.1.v] --}}
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-crud-target="tamanho-folha">Tamanho de Folha</a> {{-- [2.1.vi] --}}
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-crud-target="valor-historico">Valor Histórico</a> {{-- [2.1.vii] --}}
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-crud-target="estado-conservacao">Estado de Conservação</a> {{-- [2.1.viii] --}}
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-crud-target="documento-processo">Docto e Processo</a> {{-- [2.1.ix] --}}
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</header>
+--- ```
+--- 
+--- **`resources/views/unidade_custodiadora/form.blade.php` (Exemplo de Formulário CRUD)**
+--- 
+--- ```html
+@extends('layouts.app')
+
+@section('content')
+<div class="card">
+    <div class="card-header">Gerenciar Unidade de Custódia</div>
+    <div class="card-body">
+        <form id="unidadeCustodiaForm">
+            <div class="mb-3">
+                <label for="searchUnidade" class="form-label">Buscar Unidade de Custódia (ID ou Nome)</label>
+                <input type="text" class="form-control rounded-input" id="searchUnidade" placeholder="Digite para buscar..."> {{-- Campo de busca [2.3.i], borda arredondada [2.a.iv] --}}
+                <small class="form-text text-muted">Use este campo para buscar ou deixe vazio para inserir um novo registro.</small>
+            </div>
+
+            <div class="mb-3">
+                <label for="unidadeCustodiadora" class="form-label">Unidade de Custodiadora</label>
+                <input type="text" class="form-control rounded-input" id="unidadeCustodiadora" name="unidadeCustodiadora" required disabled> {{-- Campos desabilitados inicialmente [2.3.i.1], borda arredondada [2.a.iv] --}}
+            </div>
+            <input type="hidden" id="unidadeId" name="id">
+            <input type="hidden" id="autorRegistro" name="autorRegistro" value="{{ auth()->user()->name ?? 'Sistema' }}"> {{-- Preencher automaticamente com usuário logado ou default --}}
+            <input type="hidden" id="dataHoraRegistro" name="dataHoraRegistro" value="{{ date('Y-m-d H:i:s') }}"> {{-- Preencher automaticamente --}}
+
+            <div class="d-flex justify-content-between">
+                <button type="button" class="btn btn-secondary" onclick="window.location='{{ url('/') }}'">Voltar ao Menu Principal</button> {{-- [2.3.iii] --}}
+                <button type="submit" class="btn btn-primary" id="saveButton" disabled>Gravar</button> {{-- [2.3.iv] --}}
+            </div>
+        </form>
+        <div id="searchResults" class="mt-3">
+            {{-- Resultados da busca serão exibidos aqui --}}
+        </div>
+    </div>
+</div>
+@endsection
+--- ```
+---
+--- ### 2. CSS (`public/css/style.css`)
+--- Este arquivo definirá o estilo conforme as especificações [2.a].
+--- ```css
+/* style.css */
+
+body {
+    background-color: #fff; /* Fundo branco [2.a.i] */
+    font-family: Arial, sans-serif; /* Fontes tipo Arial [2.a.iii] */
+    color: #333; /* Cor preta para fontes [2.a.iii] */
+    font-size: 1rem; /* Tamanho padrão da estrutura capitular da internet [2.a.iii] */
+}
+
+.header {
+    background-color: #6a9ac9; /* Barra de menu na cor azul em tons suaves [2.a.ii] */
+    color: white;
+}
+
+.header .navbar-brand,
+.header .nav-link {
+    color: white;
+    font-size: 1.2rem;
+}
+
+.header .nav-link:hover {
+    color: #f0f0f0;
+}
+
+.rounded-input {
+    border-radius: 0.5rem !important; /* Borda arredondada para campos de entrada [2.a.iv, 2.3.ii] */
+}
+
+/* Estilos adicionais para o layout */
+.container {
+    max-width: 1200px;
+}
+
+.card {
+    border-radius: 0.75rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+    background-color: #f8f9fa;
+    font-weight: bold;
+    font-size: 1.25rem;
+}
+
+/* Ajustes para responsividade */
+@media (max-width: 991.98px) {
+    .header .navbar-nav {
+        background-color: #6a9ac9;
+        padding: 10px 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .header .nav-link {
+        padding-left: 15px;
+    }
+}
+/*
+### 3. PHP (Backend com Laravel)
+
+A lógica PHP será implementada em Controladores e Modelos, utilizando o Eloquent ORM do Laravel para interagir com o banco de dados MySQL.
+
+**Exemplo de Migration para `unidadeCustodiadora` (`database/migrations/..._create_unidade_custodiadora_table.php`)**
+
+```php */
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    public function up(): void
+    {
+        Schema::create('unidadeCustodiadora', function (Blueprint $table) {
+            $table->id(); // id INT PRIMARY KEY AUTO_INCREMENT
+            $table->string('autorRegistro'); // autorRegistro VARCHAR(255) NOT NULL
+            $table->dateTime('dataHoraRegistro'); // dataHoraRegistro DATETIME NOT NULL
+            $table->string('unidadeCustodiadora'); // unidadeCustodiadora VARCHAR(255)
+            // Laravel por padrão adiciona created_at e updated_at. Se não forem desejados, usar $table->timestamps(); ou remover.
+            // O documento não especifica, mas é boa prática para auditoria.
+        });
+    }
+
+    public function down(): void
+    {
+        Schema::dropIfExists('unidadeCustodiadora');
+    }
+};
+/* ```
+*Note: Você precisaria criar migrations semelhantes para todas as tabelas listadas nos fontes.*
+
+**Exemplo de Model para `UnidadeCustodiadora` (`app/Models/UnidadeCustodiadora.php`)**
+
+```php */
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class UnidadeCustodiadora extends Model
+{
+    use HasFactory;
+
+    protected $table = 'unidadeCustodiadora'; // Nome da tabela no banco de dados
+    protected $fillable = [
+        'autorRegistro',
+        'dataHoraRegistro',
+        'unidadeCustodiadora'
+    ];
+    public $timestamps = false; // Desabilitar timestamps automáticos do Laravel se 'dataHoraRegistro' for manual
+}
+/* ```
+*Note: Modelos semelhantes seriam criados para todas as outras tabelas.*
+
+**Exemplo de Controller para `UnidadeCustodiadora` (`app/Http/Controllers/UnidadeCustodiadoraController.php`)**
+
+```php */
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Models\UnidadeCustodiadora;
+
+class UnidadeCustodiadoraController extends Controller
+{
+    // Método para exibir o formulário (poderia ser carregado via AJAX)
+    public function showForm()
+    {
+        return view('unidade_custodiadora.form');
+    }
+
+    // Método para buscar um registro [2.3.i]
+    public function search(Request $request)
+    {
+        $searchTerm = $request->input('search');
+        if (empty($searchTerm)) {
+            return response()->json(['message' => 'Nenhum termo de busca fornecido.', 'data' => null]);
+        }
+
+        // Tenta buscar por ID ou nome
+        $unidade = UnidadeCustodiadora::where('id', $searchTerm)
+                                      ->orWhere('unidadeCustodiadora', 'like', '%' . $searchTerm . '%')
+                                      ->first();
+
+        if ($unidade) {
+            return response()->json(['success' => true, 'data' => $unidade, 'message' => 'Registro encontrado.']);
+        } else {
+            return response()->json(['success' => false, 'data' => null, 'message' => 'Nenhum registro encontrado. Campos desbloqueados para novo registro.']); // [2.3.i.1]
+        }
+    }
+
+    // Método para salvar/atualizar um registro (CRUD - Create/Update) [2.3.iv]
+    public function store(Request $request)
+    {
+        $request->validate([
+            'unidadeCustodiadora' => 'required|string|max:255',
+            'autorRegistro' => 'required|string|max:255',
+            'dataHoraRegistro' => 'required|date_format:Y-m-d H:i:s',
+        ]);
+
+        if ($request->filled('id')) {
+            // Atualizar registro existente
+            $unidade = UnidadeCustodiadora::find($request->input('id'));
+            if (!$unidade) {
+                return response()->json(['success' => false, 'message' => 'Registro não encontrado para atualização.'], 404);
+            }
+            $unidade->update($request->all());
+            return response()->json(['success' => true, 'message' => 'Registro atualizado com sucesso!', 'data' => $unidade]);
+        } else {
+            // Criar novo registro
+            $unidade = UnidadeCustodiadora::create($request->all());
+            return response()->json(['success' => true, 'message' => 'Registro criado com sucesso!', 'data' => $unidade]);
+        }
+    }
+
+    // Método para deletar um registro (CRUD - Delete)
+    public function destroy($id)
+    {
+        $unidade = UnidadeCustodiadora::find($id);
+        if (!$unidade) {
+            return response()->json(['success' => false, 'message' => 'Registro não encontrado para exclusão.'], 404);
+        }
+        $unidade->delete();
+        return response()->json(['success' => true, 'message' => 'Registro excluído com sucesso!']);
+    }
+
+    // Método para listar todos os registros (CRUD - Read - Opcional para uma tela de listagem)
+    public function index()
+    {
+        $unidades = UnidadeCustodiadora::all();
+        return view('unidade_custodiadora.index', compact('unidades'));
+    }
+}
+/* ```
+**`routes/web.php` (Definição de Rotas)**
+```php */
+<?php
+
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UnidadeCustodiadoraController;
+use App\Http\Controllers\MunicipioCustodiadoraController; // Exemplo para outro controller
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider and all of them will
+| be assigned to the "web" middleware group. Make something great!
+|
+*/
+
+Route::get('/', function () {
+    return view('home'); // Página inicial (poderia ser o dashboard ou um "main" vazio)
+});
+
+// Rotas para Unidade de Custódia (exemplo completo de CRUD)
+Route::prefix('unidade-custodia')->group(function () {
+    Route::get('/', [UnidadeCustodiadoraController::class, 'showForm'])->name('unidade.form'); // Exibe o formulário
+    Route::post('/search', [UnidadeCustodiadoraController::class, 'search'])->name('unidade.search'); // Rota para busca [2.3.i]
+    Route::post('/store', [UnidadeCustodiadoraController::class, 'store'])->name('unidade.store'); // Salva ou atualiza [2.3.iv]
+    Route::delete('/{id}', [UnidadeCustodiadoraController::class, 'destroy'])->name('unidade.destroy'); // Deleta
+    // Adicionar rota para listagem completa se necessário: Route::get('/list', [UnidadeCustodiadoraController::class, 'index'])->name('unidade.index');
+});
+
+// Exemplo de rota para Município de Custódia (o ideal é ter um prefixo e grupo para cada CRUD)
+Route::prefix('municipio-custodia')->group(function () {
+    Route::get('/', [MunicipioCustodiadoraController::class, 'showForm'])->name('municipio.form');
+    Route::post('/search', [MunicipioCustodiadoraController::class, 'search'])->name('municipio.search');
+    Route::post('/store', [MunicipioCustodiadoraController::class, 'store'])->name('municipio.store');
+    // ... e assim por diante para todos os 9 itens do menu [2.1]
+});
+/*  ```
+---
+### 4. JavaScript (`public/js/app.js`)
+O JavaScript será responsável pela interatividade no frontend, como carregar formulários dinamicamente e lidar com a lógica de busca e desbloqueio de campos [2.3.i.1].
+```javascript */
+// public/js/app.js
+
+document.addEventListener('DOMContentLoaded', function() {
+    const contentArea = document.getElementById('content-area');
+    const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+
+    // Função para carregar formulários via AJAX [2.3]
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = this.dataset.crudTarget; // Ex: 'unidade-custodia'
+            const url = `/${target}`; // Rota base para o formulário
+            
+            fetch(url)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.text();
+                })
+                .then(html => {
+                    contentArea.innerHTML = html; // Insere o formulário no corpo da página
+                    initializeCrudForm(target); // Inicializa a lógica específica do formulário carregado
+                })
+                .catch(error => {
+                    console.error('Erro ao carregar o formulário:', error);
+                    contentArea.innerHTML = `<div class="alert alert-danger">Erro ao carregar o formulário de ${target}.</div>`;
+                });
+        });
+    });
+
+    // Função para inicializar a lógica de busca e formulário após o carregamento dinâmico
+    function initializeCrudForm(target) {
+        // Exemplo para Unidade de Custódia. Adaptar para outros formulários.
+        if (target === 'unidade-custodia') {
+            const searchInput = document.getElementById('searchUnidade');
+            const unidadeCustodiadoraInput = document.getElementById('unidadeCustodiadora');
+            const unidadeIdInput = document.getElementById('unidadeId');
+            const saveButton = document.getElementById('saveButton');
+            const form = document.getElementById('unidadeCustodiaForm');
+            const searchResultsDiv = document.getElementById('searchResults');
+
+            // Função para resetar e desabilitar campos
+            function resetFormAndDisable() {
+                unidadeCustodiadoraInput.value = '';
+                unidadeIdInput.value = '';
+                unidadeCustodiadoraInput.disabled = true;
+                saveButton.disabled = true;
+                searchResultsDiv.innerHTML = '';
+            }
+
+            // Lógica de busca no primeiro campo [2.3.i]
+            let searchTimeout;
+            searchInput.addEventListener('input', function() {
+                clearTimeout(searchTimeout);
+                searchTimeout = setTimeout(() => {
+                    const searchTerm = searchInput.value.trim();
+                    if (searchTerm.length === 0) {
+                        searchResultsDiv.innerHTML = '<div class="alert alert-info">Digite algo para buscar ou deixe vazio para inserir um novo registro.</div>';
+                        unidadeCustodiadoraInput.disabled = false; // Desbloqueia para novo registro [2.3.i.1]
+                        saveButton.disabled = false;
+                        unidadeIdInput.value = ''; // Limpa ID para garantir que seja novo registro
+                        unidadeCustodiadoraInput.focus();
+                        return;
+                    }
+
+                    fetch('/unidade-custodia/search', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content') // Laravel CSRF
+                        },
+                        body: JSON.stringify({ search: searchTerm })
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success && data.data) {
+                            // Registro encontrado
+                            searchResultsDiv.innerHTML = `<div class="alert alert-success">Registro encontrado: ID ${data.data.id} - ${data.data.unidadeCustodiadora}</div>`;
+                            unidadeCustodiadoraInput.value = data.data.unidadeCustodiadora;
+                            unidadeIdInput.value = data.data.id;
+                            unidadeCustodiadoraInput.disabled = false; // Desbloqueia para edição
+                            saveButton.disabled = false;
+                        } else {
+                            // Nenhum registro encontrado, desbloqueia para novo registro [2.3.i.1]
+                            searchResultsDiv.innerHTML = `<div class="alert alert-warning">${data.message || 'Nenhum registro encontrado. Campos desbloqueados para novo registro.'}</div>`;
+                            unidadeCustodiadoraInput.value = '';
+                            unidadeIdInput.value = '';
+                            unidadeCustodiadoraInput.disabled = false;
+                            saveButton.disabled = false;
+                            unidadeCustodiadoraInput.focus();
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Erro na busca:', error);
+                        searchResultsDiv.innerHTML = `<div class="alert alert-danger">Erro ao buscar: ${error.message}</div>`;
+                        unidadeCustodiadoraInput.disabled = true; // Mantém desabilitado em caso de erro grave
+                        saveButton.disabled = true;
+                    });
+                }, 500); // Debounce de 500ms
+            });
+
+            // Lógica de submissão do formulário (Gravar) [2.3.iv]
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                saveButton.disabled = true; // Desabilita para evitar múltiplos cliques
+
+                const formData = {
+                    id: unidadeIdInput.value,
+                    unidadeCustodiadora: unidadeCustodiadoraInput.value,
+                    autorRegistro: document.getElementById('autorRegistro').value,
+                    dataHoraRegistro: document.getElementById('dataHoraRegistro').value
+                };
+
+                fetch('/unidade-custodia/store', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                    },
+                    body: JSON.stringify(formData)
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        searchResultsDiv.innerHTML = `<div class="alert alert-success">${data.message}</div>`;
+                        // Opcional: Recarregar a lista ou limpar o formulário
+                        resetFormAndDisable();
+                        searchInput.value = ''; // Limpa o campo de busca
+                        // Se for uma atualização, o ID poderia ser mantido, mas para novo registro, deve ser limpo
+                    } else {
+                        searchResultsDiv.innerHTML = `<div class="alert alert-danger">${data.message || 'Erro ao salvar.'}</div>`;
+                    }
+                    saveButton.disabled = false;
+                })
+                .catch(error => {
+                    console.error('Erro ao salvar:', error);
+                    searchResultsDiv.innerHTML = `<div class="alert alert-danger">Erro ao salvar: ${error.message}</div>`;
+                    saveButton.disabled = false;
+                });
+            });
+
+            // Inicialmente desabilita os campos e botões até uma busca ou clique para novo registro
+            resetFormAndDisable();
+        }
+        // ... Repetir e adaptar para cada tipo de formulário (municipio-custodia, tipo-processo, etc.)
+    }
+
+    // Adicionar token CSRF para requisições AJAX do Laravel
+    const metaCsrfToken = document.createElement('meta');
+    metaCsrfToken.setAttribute('name', 'csrf-token');
+    metaCsrfToken.setAttribute('content', '{{ csrf_token() }}'); // O Blade renderizará o token
+    document.head.appendChild(metaCsrfToken);
+});
+/* ```
+---
+
+**Observações Importantes para a Implementação Completa:**
+
+1.  **Laravel Setup**: Este guia assume que você já tem um projeto Laravel configurado. Você precisaria rodar `composer create-project laravel/laravel inventario-documentario` e configurar o `.env` (especialmente as credenciais do MySQL).
+2.  **Migrations**: Crie e execute todas as migrations para cada tabela (`php artisan make:migration create_..._table --create=...`) com base no `TabLevantamentoDoctosProcessos.sql` e, em seguida, `php artisan migrate`.
+3.  **Models**: Crie um modelo Laravel (`php artisan make:model <NomeModelo>`) para cada tabela e configure `protected $table` e `$fillable`.
+4.  **Controllers**: Crie um controlador para cada tipo de CRUD (`php artisan make:controller <NomeEntidade>Controller`) e implemente os métodos `showForm`, `search`, `store`, `destroy` e `index` (se aplicável).
+5.  **Views**: Crie as views Blade (`.blade.php`) para cada formulário CRUD em suas respectivas pastas (`resources/views/<nome_entidade>/form.blade.php`).
+6.  **Rotas**: Defina as rotas no `routes/web.php` para cada controlador e método.
+7.  **Validação**: Implemente validação robusta no lado do servidor (PHP Laravel) e do cliente (JavaScript) para garantir a integridade dos dados.
+8.  **Tratamento de Erros**: Adicione um tratamento de erros mais abrangente no PHP e JavaScript.
+9.  **Autenticação/Autorização**: O campo `autorRegistro` sugere que haverá um sistema de usuários. O Laravel possui um sistema de autenticação robusto (`php artisan make:auth` nas versões mais antigas ou `composer require laravel/breeze` ou `laravel/jetstream` nas mais recentes) que deve ser implementado.
+10. **Refinamento da UI**: O Bootstrap oferece muitos componentes; utilize-os para criar uma interface intuitiva e responsiva.
+11. **CSS CSRF Token**: Para que o JavaScript possa fazer requisições POST/PUT/DELETE com o token CSRF do Laravel, adicione `<meta name="csrf-token" content="{{ csrf_token() }}">` no `head` do `app.blade.php`.
+
+Este esboço fornece a base e os exemplos dos scripts solicitados (HTML, CSS, PHP, JavaScript) seguindo rigorosamente as especificações do documento de origem e incorporando as tecnologias e requisitos mencionados.
+*/
