@@ -1,0 +1,85 @@
+-- Documentos e processos administrativos e judiciais
+documentos_processos 
+;autorRegistro;texto;Autor que realiza a ação de registro
+;dataHoraRegistro;data;Registro de data, hora e sessão de origem da ação
+;idUnidadeCustodiadora;numero;Código da  de unidades - Preferencialmente obtido da base Institucional
+;idMunicipioCustodiadora;numero;Código da  de unidades - Preferencialmente obtido da base IBGE
+;numeroDocumentoProcesso;texto;,
+;idTipoProcesso;numero;Código da  de classificação processos Administrativo/Judicial/Gestão Pessoas
+;tituloDescricaoDocumentoProcesso;texto;Título ou descrição do documento ou processo
+;dataInicioTramitacao;data;Primeira data do processo
+;dataFimTramitacao;data;ultima data do processo
+;quantidadeDocumentos;numero;Quantidade de folhas
+;volume;texto;Qual o volume a ser registrado 1, 2, 3,...
+;volumeFinal;texto;Total de volumes do processo
+;idTipoVolume;numero;Código da  de tipos de volumes Livro/Processo/Documento
+;idCodClassificacaoTabelaTemporalidade;numero;Código da  de classificação de temporalidade
+;idTamanhoFolha;numero;Código da  de tamanho de folhas
+;idValorHistorico;numero;Código da  de valor histórico
+;idEstadoConservacao;numero;Código da  de estado de conservação
+;localArmazenamento;texto;Móvel / Estante / Prateleira / Caixa / Gaveta / Pasta
+;codigoEventoEditalSEI;texto;Evento de tramitação no SEI da publicação do edital
+;dataEventoPublicacaoSEI;data;Data SEI da publicação do edital
+;observacoes;texto;Campo para notas adicionais
+
+--  de unidades demandadas
+unidadeCustodiadora 
+;autorRegistro;texto;Autor que realiza a ação de registro
+;dataHoraRegistro;data;Registro de data, hora e sessão de origem da ação
+;id;numero;Identificação única do registro
+;dataHoraRegistro;data;Registro de data, hora e sessão de origem da ação
+;unidadeCustodiadora;texto;Unidade custodiadora do documento ou processo
+
+--  de Muicipio da unidades demandadas
+municipioCustodiadora 
+;autorRegistro;texto;Autor que realiza a ação de registro
+;dataHoraRegistro;data;Registro de data, hora e sessão de origem da ação
+;id;numero;Identificação única do registro
+;municipioCustodiadora;texto;Município da unidade custodiadora do documento ou processo
+
+--  para armazenar os tipos de volumes
+tipoProcesso 
+;autorRegistro;texto;Autor que realiza a ação de registro
+;dataHoraRegistro;data;Registro de data, hora e sessão de origem da ação
+;id;numero;Identificação única do registro
+;tipoProcesso;texto;Tipo do processo Administrativo, Judicial, Gestão Pessoas, que está incluso no Plano de Classificação
+
+--  para armazenar os tipos de volumes
+tipoVolume 
+;autorRegistro;texto;Autor que realiza a ação de registro
+;dataHoraRegistro;data;Registro de data, hora e sessão de origem da ação
+;id;numero;Identificação única do registro
+;tipoVolume;texto;Tipo de volume Livro, Processo, Documento, que está incluso no Plano de Classificação
+
+--  de classificação de temporalidade
+classificacaoTemporalidade 
+;autorRegistro;texto;Autor que realiza a ação de registro
+;dataHoraRegistro;data;Registro de data, hora e sessão de origem da ação
+;id;numero;Identificação única do registro
+;codigo;texto;Código da classificação da temporalidade
+;descricao;texto;Descrição da classificação da temporalidade
+;tempoGuardaCorrente;numero;Tempo em meses ou anos
+;tempoGuardaGuardaIntermediaria;numero;Tempo em meses ou anos
+;destinacaoFinal;texto;Ex: Eliminação, Guarda Permanente
+;observacaoAvisos;texto;Campo para notas adicionais
+
+--  tamanho de folha A0, A2, A3, A4, A5, A6, Oficio, Jornal, folheto, Planta
+tamanhoFolha 
+;autorRegistro;texto;Autor que realiza a ação de registro
+;dataHoraRegistro;data;Registro de data, hora e sessão de origem da ação
+;id;numero;Identificação única do registro
+;tamanhoFolha;texto;
+
+--  para armazenar os códigos de descrição do valor histórico
+valorHistorico 
+;autorRegistro;texto;Autor que realiza a ação de registro
+;dataHoraRegistro;data;Registro de data, hora e sessão de origem da ação
+;id;numero;Identificação única do registro
+;valorHistorico;texto;
+
+--  descrição do estado de conservação do processo Bom, Danificado, ilegível,
+estadoConservacao 
+;autorRegistro;texto;Autor que realiza a ação de registro
+;dataHoraRegistro;data;Registro de data, hora e sessão de origem da ação
+;id;numero;Identificação única do registro
+;estadoConservacao;texto;

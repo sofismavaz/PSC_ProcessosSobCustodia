@@ -1,0 +1,48 @@
+SELECT CPF "CPF do servidor",
+CONCAT(DECODE (MES,
+'01', 'jan',
+'02', 'fev',
+'03', 'mar',
+'04', 'abr',
+'05', 'mai',
+'06', 'jun',
+'07', 'jul',
+'08', 'ago',
+'09', 'set',
+'10', 'out',
+'11', 'nov',
+'dez') ,
+CONCAT('/',SUBSTR(ANO,-2,2))) "mes e ano",
+ROUND((FLOOR(SUM50) + (SUM50 - FLOOR(SUM50)) / 60 * 100),2) "quantidade HE 50%",
+ROUND((FLOOR(SUM100) + (SUM100 - FLOOR(SUM100)) / 60 * 100),2) "quantidade HE 100%"
+FROM (
+SELECT CPF, ANO, MES, SUM(P50) SUM50, SUM(P100) SUM100
+FROM (
+
+SELECT s.NUM_CPF CPF,
+SUBSTR(fsr.MES_ANO_FOLHA,-4,4) ANO,
+SUBSTR(fsr.MES_ANO_FOLHA,1,2) MES,
+fsr.QUANTIDADE / 100 P50,
+0 P100
+FROM folha.FL_SERV_RUB fsr,
+srh2.servidor s
+WHERE fsr.MAT_SERVIDOR = s.MAT_SERVIDOR
+AND COD_RUBRICA IN ('0044.000', '0045.000')
+
+UNION
+
+SELECT s.NUM_CPF CPF,
+SUBSTR(fsr.MES_ANO_FOLHA,-4,4) ANO,
+SUBSTR(fsr.MES_ANO_FOLHA,1,2) MES,
+0 P50,
+fsr.QUANTIDADE / 100 P100
+FROM folha.FL_SERV_RUB fsr,
+srh2.servidor s
+WHERE fsr.MAT_SERVIDOR = s.MAT_SERVIDOR
+AND COD_RUBRICA IN ('0046.000')
+
+)
+GROUP BY CPF, ANO, MES
+ORDER BY CPF, ANO, MES
+)
+

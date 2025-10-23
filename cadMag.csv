@@ -1,0 +1,86 @@
+Descrição dos atributos do Cadastro de Pessoas
+;matricula;numero;Número de matrícula (identificador unitário)
+;matriculaAnterior;número;Número de matrícula anterior (caso exista)
+;cpf;texto;CPF (identificador unitário)
+;nome;texto;Nome completo
+;dtNascimento;data;Data de nascimento
+;idSexo;texto;Identificador de sexo (por exemplo, 'M' para masculino, 'F' para feminino)
+;email;texto;endereço pessoal de email 
+;identidadeRG;texto;Número do RG
+;orgaoExpedidorRG;texto;Órgão expedidor do RG
+;ufEmissorRG;texto;Unidade Federativa (sigla de 2 caracteres)
+;dtEmissaoRG;data;data de emissão do Registro Geral
+;pisPasep;texto;Número do PIS/PASEP
+;certificadoMilitar;texto;identificação do certificado de alistamento militar
+;tituloEleitor;texto;número do título de eleitor
+;ufTitulo;texto;Unidade da federação do título de eleitor
+;municipioEleitoral;texto;município de emissão do título de eleitor
+;zonaEleitoral;texto;Zona a qual o título de eleitor foi emitido
+;secaoEleitoral;texto;seção eleitoral do título
+;dtExpedicaoTitulo;data;data de expedição do título
+;dtUltimaVotacao;data;data da última votação do eleitor
+;nomePai;texto;nome do pai 
+;nomeMae;texto;nome da mãe
+;estadoCivil;texto;estado civil
+;nomeConjuge;texto;nome do conjuge
+;localTrabalhoConjuge;texto;local de trabalho do conjuge
+;qtdeDependentes;número;quantidade de dependentes
+;nomeDependentes;texto;nome do dependente
+;logradouro;texto;Endereço (logradouro)
+;bairro;texto;Bairro
+;cidade;texto;Cidade
+;ufLogradouro;texto;Unidade da federação (UF)
+;cep;texto;Código endereçamento postal (CEP)
+;foneTrabalho;texto;Telefone de trabalho
+;foneCelular;texto;Telefone pessoal
+;cargo;texto;cargo do servidor em atividade
+;regimeCotas;texto;caso esteja incluso no regime de cotas
+;dtIngresso;data;data de investidura no cargo público
+;dtDesligamento;data;Data de desligamento
+;orgaoJulgadorLotacao;texto;para atender o CNJ
+;situacaoProfissionalAtual;texto;Situação atual - Tab aux
+;dtInicioSituacao;data;
+;dtFimSituacao;data;
+;cargoAtual;texto;
+;regimeCotas;lógico;
+;dtIngressoCargoAtual;data;Data de ingresso
+;orgaoJulgadorCargoAtual;texto;
+;situacaoProfissionalCargoAtual;texto;
+;dtinicioSituacaoCargoAtual;data;
+;drFimSituacaoCargoAtual;data;
+;nivelGraduacao;texto;
+;areaEspecializacao;texto;
+;participacaoConselho;lógico;indicativo de participação em conselho deliberativo
+;instituicaoConselho;texto;
+;atividadeDocente;lógico;indicativo de participação em Instituição de ensino
+;instituicaoEnsino;texto;nome da Instituição de ensino
+;horarioDisciplina;texto;horário de cumprimento das atividades
+;banco;texto;Instituição financeira 
+;agencia;texto;agencia da Instituição financeira
+;contaCorrente;texto;conta corrente da Instituição financeira
+;tipoConta;texto;tipo de conta na Instituição financeira
+;idTipoServidor;texto;Tipo de servidor - Tab aux
+;onusTribunal;texto;Ônus do tribunal (Sim ou Não)
+;jornadaTrabalho;texto;Jornada de trabalho
+;qtdeSalarioFamilia;número;Quantidade de salário-família
+;salarioOrigem;valor;Salário de origem
+;vencimentoOrigem;Vencimento de origem
+;valorPrevidencia;Valor da previdência
+;patronalOrigem;Patronal de origem
+;ressarcimentoOrigem;Ressarcimento de origem
+;lotacao;texto;Lotação Tab Aux
+;aprovadoTCU;lógico;Indica se foi aprovado pelo TCU (booleano)
+;possuiDoenca;lógico;Indica se possui doença (booleano)
+;dtAposentadoria;data;Data de aposentadoria
+;subtotalPercAposentadoria;valor;Subtotal percentual de aposentadoria
+;totalPercAposentadoria;valor;Total percentual de aposentadoria
+;tipoPrevidencia;texto;Tipo de previdência
+;licenciado;lógico;Indica se está licenciado (booleano)
+;instituidorPensao;lógico;Indica se é instituidor de pensão (booleano)
+;servidorPJ;lógico;Indica se é servidor PJ (booleano)
+;adicionalInsalubridade;valor;Valor do adicional de insalubridade
+;adicionalPericulosidade;valor;Valor do adicional de periculosidade
+;adicionalAtividadePenosa;valor;Valor do adicional de atividade penosa
+;Origem;texto;Origem
+;nrBienio;número;Número do biênio
+;permanencia;texto;Informação sobre permanência

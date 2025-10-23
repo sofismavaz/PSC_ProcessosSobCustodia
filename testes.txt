@@ -1,0 +1,106 @@
+"Aieza Dos Santos Bandeira" <aieza@tre-ac.jus.br>;
+"Francisco Claudio Barbosa Paes" <claudio@tre-ac.jus.br>;
+"Aldirene Da Silva Maia" <aldirene@tre-ac.jus.br>;
+"Eronilson Martins Cordeiro" <eronilson@tre-ac.jus.br>;
+"Yasmim de Jesus Gaertner" <yasmim@tre-ac.jus.br>;
+"Roberval Santos Cavalcante Neto" <robervalsantos@tre-ac.jus.br>;
+"Maria de Fatima Nascimento Lima" <fatima@tre-ac.jus.br>;
+"Lucir Rocio Vaz" <lucir@tre-ac.jus.br>;
+"Ilis Sandro Antonio Areno Ambrozio" <ilis@tre-ac.jus.br>;
+"Cleyson Riccely Amorim de Castro" <ccastro@mpac.mp.br>;
+"Elinei Carvalho Santana" <elinei.santana@tjac.jus.br>;
+"Sandra Mônica Lopes Sampaio" <sandra.sampaio@tjac.jus.br>;
+"Edcley Da Silva Firmino" <edcley@tre-ac.jus.br>;
+"Silvio Forastiero Frazao" <silvio@tre-ac.jus.br>;
+"Ilis Sandro Antonio Areno Ambrozio" <ilis@tre-ac.jus.br>;
+"Jose Jair Calvacante de Figueiredo" <jair.figueiredo@tre-ac.jus.br>;
+"Thallys Bandeira Roque Maia Pinto" <thalleys@tre-ac.jus.br>;
+"Jonathan Messias e Silva" <jonathan@tre-ac.jus.br>;
+"Felipe Bezerra Lima" <felipe.lima@tre-ac.jus.br>;
+"Igor Marcel De Oliveira Pinheiro" <ipinheiro@mpac.mp.br>;
+"Gabriel Teixeira da Silveira" <gabriel.teixeira@tjac.jus.br>;
+"João de Oliveira Lima Neto" <oliveira.neto@tjac.jus.br>;
+
+
+
+
+ACESSIBILIDADE
+ETAPAS DO PROCESSO ELEITORAL E SISTEMAS ELEITORAIS ENVOLVIDOS:
+Etapa 1 - Cadastro Eleitoral
+Atividade: Cadastro de eleitores e filiação partidária
+Sistemas utilizados: Elo
+O cadastramento dos dados de domicílio eleitoral, filiação partidária, alistamento, transferência e revisão de eleitores é
+realizado e consolidado no Sistema ELO. A Zona Eleitoral é responsável pela operação desse sistema, cujo suporte é
+realizado pela SAWSI.
+Etapa 2 - Registro de Candidaturas
+Atividade: Registro de candidaturas
+Sistemas utilizados: CANDEX e CAND
+Os dados do registro de candidaturas são cadastrados no sistema CANDEX-Partido pelos candidatos/partidos e são
+enviados para o sistema CAND, onde são administrados pela justiça eleitoral. O CANDEX-JE é utilizado pela justiça
+eleitoral para receber presencialmente e fazer o aceite dos pedidos de registro. Nas eleições municipais, o Juiz Eleitoral
+é responsável pelo registro de candidaturas, portanto as Zonas Eleitorais operam o CANDEX-JE, o CAND e auxiliam os
+candidatos/partidos na utilização do sistema CANDEX-Partido. Nas eleições gerais a competência sobre o registro de
+candidatos é dos TREs e TSE e, nesse caso, as Zonas Eleitorais podem realizar consultas e emitir relatórios no sistema
+CAND. O suporte jurídico/operacional desses sistemas é realizado pela SCAND. O suporte à instalação do CANDEX e
+erros dos sistemas CANDEX E CAND são atendidos pela SESEL.
+Etapa 3 - Propaganda Eleitoral
+Atividade: Propaganda eleitoral
+Sistemas utilizados: Horário eleitoral (HE)
+Veiculação da propaganda gratuita em rádio e TV no 2º Turno. O sistema de Horário Eleitoral (HE) auxilia os responsáveis
+pela propaganda eleitoral gratuita no rádio e na TV a realizarem a montagem da escala da distribuição do horário eleitoral
+gratuito em rede e na elaboração do plano de mídia para inserções. Nas eleições gerais a competência sobre propaganda
+eleitoral é dos TREs e do TSE. Nas eleições municipais a competência sobre a propaganda eleitoral é do Juiz Eleitoral
+nas Zonas Eleitorais. O suporte do HE é realizado pela SPROP.
+Etapa 4 - Prestação de contas
+Atividade: Prestação de contas
+Sistemas utilizados: SPCE Cadastro e SPCEWeb
+Após o registro de candidaturas inicia-se o processo da Prestação de Contas relativa a doações e gastos de campanha
+eleitoral. Nessa etapa são utilizados o sistema SPCE para cadastro e envio da prestação de contas pelos candidatos e
+partidos políticos e SPCEWeb para análise e julgamento das contas pelos Tribunais Eleitorais nas eleições gerais e pelas
+Zonas Eleitorais nas eleições municipais. O suporte aos sistemas é realizado pela SACOE.
+Etapa 5 - Conferência de dados
+Atividade: Conferência dos dados
+Sistemas utilizados: SIMON e SISTOT
+As Zonas Eleitorais fazem o monitoramento e a conferência dos dados utilizados em todos os sistemas até serem
+carregados nas urnas eletrônicas. O monitoramento das versões dos pacotes é realizado por meio do SIMON e os
+relatórios para conferência dos dados são emitidos por meio do SISTOT. O suporte aos procedimentos nesses sistemas
+é realizado pela SESEL.
+Etapa 6 - Geração de mídias
+Atividade: Geração de mídias
+Sistemas utilizados: GEDAI-UE
+As Zonas Eleitorais são responsáveis pela geração das mídias no sistema GEDAI-UE para a carga das urnas eletrônicas.
+O suporte aos procedimentos no GEDAI-UE é realizado pela SESEL.
+Etapa 7 - Preparação das urnas (carga)
+Atividade: Preparação das urnas - carga
+Sistemas utilizados: Aplicativos de urna eletrônica
+A Zona Eleitoral utiliza os aplicativos de urna eletrônica para as etapas de carga e auditoria das urnas. Após a carga,
+recebem e transmitem as correspondências por meio do sistema GEDAI_UE. O suporte aos aplicativos de urna é
+realizado pela SURNA.
+Etapa 8 – Votação
+Atividade: Votação
+Sistemas utilizados: Aplicativos de urna eletrônica
+Os Aplicativos de urna eletrônica – votação e justificativa são sistemas responsáveis pelo acionamento das urnas no dia
+da eleição. O suporte aos aplicativos de urna é realizado pela SURNA. A urna pode emitir a Zerésima a partir das 7h e
+o período de votação é de 8 as 17h.
+Etapa 9 - Solução de contingências de urna
+Atividade: Solução de contingências de urna
+Sistemas utilizados: Aplicativos de urna eletrônica
+Os Aplicativos de urna eletrônica - recuperador RED e apuração SA - são sistemas utilizados pelas Zonas Eleitorais,
+caso ocorram contingências no funcionamento da urna eletrônica e o suporte é dado pela SURNA.
+Etapa 10 - Transmissão dos arquivos de urna
+Atividade: Transmissão dos arquivos de urna
+Sistemas utilizados: Transportador Desktop e Web
+Para transmissão de arquivos de urna, tanto na eleição geral como na municipal, as Zonas Eleitorais usam o sistema
+Transportador. Esse sistema será disponibilizado tanto na versão Desktop como na versão WEB. A transmissão ocorre
+a partir das 17h. O suporte ao Transportador é realizado pela SESEL.
+Etapa 11 – Totalização
+Atividade: Totalização
+Sistemas utilizados: SISTOT
+O TSE, os TREs e as Zonas Eleitorais utilizam o SISTOT, para o acompanhamento da situação das seções, totalização
+e emissão de relatórios. O suporte ao sistema SISTOT é realizado pela SESEL.
+Etapa 12 – Divulgação
+Atividade: Divulgação
+Sistemas utilizados: DIVULGA
+O sistema Divulga é utilizado para o acompanhamento, pelo público externo, dos resultados das eleições, além de
+fornecer dados estatísticos e candidatos e partidos. O suporte ao Divulga - resultados de eleições é realizado pela
+SAWSI.
